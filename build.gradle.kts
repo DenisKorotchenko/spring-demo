@@ -25,16 +25,25 @@ dependencies {
 
 
 tasks {
-    withType<KotlinCompile> {
+    withType<KotlinCompile>().configureEach {
         kotlinOptions {
             freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = "17"
         }
     }
-    withType<Test> {
+    withType<Test>().configureEach {
         useJUnitPlatform()
     }
 
-    register("tim")
+    register<MyTask>("myTask").configure {
+
+    }
+
 }
 
+open class MyTask : DefaultTask(){
+    init {
+        group = "best"
+        println("Init")
+    }
+}

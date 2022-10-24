@@ -8,27 +8,41 @@ class Project(
 
     }
 
-    fun MutableList<DefaultTask>.register(name: String) {
-        tasks.add(Task(name))
+    inline fun <reified T : DefaultTask> MutableList<DefaultTask>.register(name: String): T {
+        val task = T::class.constructors.first().call(name)
+        tasks.add(MyTask(name))
+        return task
     }
 
-    fun MutableList<DefaultTask>.withType(type: Class<in DefaultTask>): List<DefaultTask> {
-        return tasks.filter { it::class == type }
-    }
+    inline fun <reified T : DefaultTask> MutableList<DefaultTask>.withType(): List<T> =
+        tasks.filterIsInstance<T>()
+
+    inline fun <reified T : DefaultTask> MutableList<DefaultTask>.named(
+        name: String,
+        noinline block: (T.() -> Unit)? = null
+    ): T =
+        withType<T>().first { it.name == name }.apply { block?.let { it() } }
+
 }
 
-class Task(
-    name: String,
+class MyTask(
+    name: String
 ) : DefaultTask(name)
 
-abstract class DefaultTask(val name: String)
+abstract class DefaultTask(val name: String) {
+    var group = "other"
+}
 
 
 fun main() {
     val project = Project()
     project.apply {
         tasks {
-            register("den")
+            register<MyTask>("den")
+            withType<MyTask>()
+            named<MyTask>("den") {
+                group = "best"
+            }
         }
     }
 
