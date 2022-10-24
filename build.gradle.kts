@@ -35,7 +35,7 @@ tasks {
         useJUnitPlatform()
     }
 
-    register<MyTask>("myTask").configure {
+    register<MyTask>("myTask").also {
 
     }
 
