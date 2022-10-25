@@ -1,7 +1,17 @@
 package my.tim
 
 class SuperLogger {
-    fun log(message: String) {
-        println(message)
+
+    enum class Level {
+        DEBUG,
+        INFO,
+        WARN,
+        ERROR
     }
+
+    fun log(message: String, level: Level) {
+        println(level.name + ": " + message)
+    }
+
+    //fun log(message: String) = log(message, Level.DEBUG)
 }
