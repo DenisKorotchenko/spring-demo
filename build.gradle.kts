@@ -5,11 +5,17 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
+
+    id("my-" + "plugin")
 }
 
 group = "denis.korotchenko"
 version = "0.0.1-SNAPSHOT"
+
+
 java.sourceCompatibility = JavaVersion.VERSION_17
+java.withSourcesJar()
+
 
 repositories {
     mavenCentral()
@@ -35,15 +41,4 @@ tasks {
         useJUnitPlatform()
     }
 
-    register<MyTask>("myTask").also {
-
-    }
-
-}
-
-open class MyTask : DefaultTask(){
-    init {
-        group = "best"
-        println("Init")
-    }
 }
