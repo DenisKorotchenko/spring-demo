@@ -8,3 +8,8 @@ tasks {
 }
 
 extensions.create("person", PersonExtenction::class)
+
+extensions.getByType(SourceSetContainer::class.java).also {
+    it.create("integrationTest"){
+    }
+}

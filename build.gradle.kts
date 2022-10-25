@@ -7,6 +7,8 @@ plugins {
     kotlin("plugin.spring") version "1.6.21"
 
     id("my-" + "plugin")
+
+    idea
 }
 
 group = "denis.korotchenko"
@@ -23,13 +25,14 @@ repositories {
 }
 
 dependencies {
+
+    integrationTestImplementation("org.jetbrains.kotlin:kotlin-reflect")
+
+
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("my.tim:producer")
-    implementation("my.tim:parser")
-    implementation(platform("my.tim:bom:2.0.0"))
     implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2021.0.1"))
     implementation(platform("org.springframework.boot:spring-boot-dependencies:2.6.4"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -46,5 +49,12 @@ tasks {
     withType<Test>().configureEach {
         useJUnitPlatform()
     }
+
+}
+
+
+tasks.register("executeHello", JavaExec::class.java) {
+    mainClass.set("TestKt")
+    classpath = files(sourceSets.integrationTest.get().runtimeClasspath)
 
 }
