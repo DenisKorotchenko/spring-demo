@@ -7,6 +7,5 @@ import org.springframework.boot.runApplication
 class DemoApplication
 
 fun main() {
-
     runApplication<DemoApplication>()
 }
