@@ -1,15 +1,12 @@
 package denis.korotchenko.demo.controller
 
 import denis.korotchenko.adulthood.AdulthoodChecker
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("adult")
 class DemoController(val adulthoodChecker: AdulthoodChecker) {
-    @GetMapping("check")
+    @PostMapping("check")
     fun check(@RequestBody request: AdultRequest): String {
         return "${adulthoodChecker.check(request.age)}"
     }

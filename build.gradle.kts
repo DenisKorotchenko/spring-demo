@@ -35,6 +35,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.4")
 
+    implementation("org.springdoc:springdoc-openapi-ui:1.6.11")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-reflect:1.7.10")
 }
