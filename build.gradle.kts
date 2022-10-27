@@ -28,9 +28,13 @@ dependencies {
     implementation(platform("org.springframework.boot:spring-boot-dependencies:2.6.4"))
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter")
+
     implementation(project("adulthood"))
+
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.4")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-reflect:1.7.10")
 }
