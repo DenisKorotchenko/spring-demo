@@ -28,7 +28,7 @@ dependencies {
     implementation(platform("org.springframework.boot:spring-boot-dependencies:2.6.4"))
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter")
-    implementation("my.den:adulthood:1.0.0")
+    implementation(project("adulthood"))
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

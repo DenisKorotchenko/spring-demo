@@ -1,7 +1,7 @@
 plugins{
     kotlin("jvm")
     `maven-publish`
-    id("org.springframework.boot") version "2.6.4"
+    kotlin("plugin.spring") version "1.6.21"
 }
 
 repositories {

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController
 class DemoController(val adulthoodChecker: AdulthoodChecker) {
     @GetMapping("/")
     fun helloWorld(): String {
-        adulthoodChecker.check(0)
-        return "Hello world!"
+        return "${adulthoodChecker.check(17)}"
     }
 }

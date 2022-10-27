@@ -1,5 +1,5 @@
 package denis.korotchenko.adulthood
 
-open class AdulthoodChecker {
-    fun check(age: Int) = age >= 18
+open class AdulthoodChecker(private val properties: AdulthoodProperties) {
+    fun check(age: Int) = age >= properties.age
 }
